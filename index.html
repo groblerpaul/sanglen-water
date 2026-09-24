@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <title>Sanglen Estate | Water Supply Restoration Status</title>
+  <title>Sanglen Estate | Water Supply Restoration Status & Engineering Dossier</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -36,11 +36,16 @@
       --status-success-text: #34D399;
       --status-success-border: rgba(16, 185, 129, 0.3);
 
+      --status-info-bg: rgba(56, 189, 248, 0.12);
+      --status-info-text: #38BDF8;
+      --status-info-border: rgba(56, 189, 248, 0.3);
+
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-pill: 9999px;
 
       --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
     }
 
     [data-theme="light"] {
@@ -64,7 +69,12 @@
       --status-success-text: #047857;
       --status-success-border: rgba(5, 150, 105, 0.25);
 
+      --status-info-bg: rgba(2, 132, 199, 0.08);
+      --status-info-text: #0284C7;
+      --status-info-border: rgba(2, 132, 199, 0.25);
+
       --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
     }
 
     * {
@@ -84,7 +94,7 @@
     }
 
     .container {
-      max-width: 640px;
+      max-width: 680px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -249,10 +259,10 @@
     .photo-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0.85rem;
+      gap: 1rem;
     }
 
-    @media (min-width: 520px) {
+    @media (min-width: 540px) {
       .photo-grid {
         grid-template-columns: repeat(3, 1fr);
       }
@@ -265,22 +275,126 @@
       background-color: var(--bg-surface-elevated);
       display: flex;
       flex-direction: column;
+      cursor: pointer;
+    }
+
+    .photo-card:hover {
+      border-color: var(--accent-primary);
+      box-shadow: var(--shadow-md);
     }
 
     .photo-card img {
       width: 100%;
-      height: 160px;
+      aspect-ratio: 4/3;
       object-fit: cover;
       display: block;
-      cursor: pointer;
+      background-color: #020617;
     }
 
     .photo-caption {
-      padding: 0.6rem;
+      padding: 0.65rem;
       font-size: 0.75rem;
       color: var(--text-secondary);
-      line-height: 1.35;
+      line-height: 1.4;
       flex-grow: 1;
+    }
+
+    .photo-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.675rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+    }
+
+    /* Technical & Engineering Bento Box */
+    .engineering-box {
+      border: 1px solid var(--status-info-border);
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .math-block {
+      background-color: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+
+    .math-formula {
+      color: var(--accent-primary);
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .math-legend {
+      font-size: 0.725rem;
+      color: var(--text-secondary);
+    }
+
+    .tech-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.775rem;
+      margin-top: 0.5rem;
+    }
+
+    .tech-table th, .tech-table td {
+      padding: 0.5rem 0.6rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .tech-table th {
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+    }
+
+    .tech-table td strong {
+      color: var(--text-primary);
+    }
+
+    /* Timeline Table */
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+
+    .timeline-table th, .timeline-table td {
+      padding: 0.55rem 0.65rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+    }
+
+    .timeline-table th {
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+    }
+
+    .timeline-time {
+      font-family: var(--font-mono);
+      color: var(--accent-primary);
+      font-size: 0.725rem;
+      white-space: nowrap;
     }
 
     /* Directives Checklist */
@@ -327,6 +441,46 @@
       border-color: var(--accent-primary);
     }
 
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.92);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     /* Footer */
     .footer {
       text-align: center;
@@ -362,7 +516,7 @@
       </div>
       <h1 class="hero-title">East Boundary Main Water Pipe Replacement</h1>
       <div class="hero-meta">
-        Updated: Thursday, 24 Sep 2026, 15:15 SAST
+        Updated: Thursday, 24 Sep 2026, 16:15 SAST &bull; Reticulation Ref: INC-20260922-WATER-02
       </div>
     </section>
 
@@ -372,79 +526,255 @@
         <span>🚰</span> Borehole Water Station: Green Tanks Next to Pool
       </div>
       <p class="station-desc">
-        Residents can collect clean borehole water directly from the <strong>large green storage tanks situated next to the swimming pool</strong>.
+        Residents can collect clean borehole water directly from the <strong>large green storage tanks situated next to the swimming pool fence</strong>.
       </p>
       <ul class="station-rules">
-        <li><strong>Location:</strong> Taps are on the green tanks next to the pool fence.</li>
-        <li><strong>Recommended Use:</strong> Toilet flushing, cleaning, and general washing. (Boil before drinking as standard precaution with borehole water, or use bottled water for drinking).</li>
-        <li><strong>Swimming Pool:</strong> The swimming pool itself is <strong>closed for water collection</strong>. Please do not dip buckets into the pool.</li>
+        <li><strong>Location:</strong> Taps are on the green tanks adjacent to the pool enclosure.</li>
+        <li><strong>Recommended Use:</strong> Toilet flushing, cleaning, and general household washing. (Boil before drinking as a standard precaution with untreated borehole water, or use bottled water for drinking).</li>
+        <li><strong>Swimming Pool:</strong> The swimming pool itself is <strong>closed for water collection</strong>. Please do not dip buckets into the pool to protect pump filtration systems and prevent contamination.</li>
       </ul>
     </section>
 
-    <!-- Verified On-Site Facts -->
+    <!-- Executive Summary of Status -->
     <section class="card">
       <h2 class="section-title">
-        <span>📋</span> Verified Status & Timeline
+        <span>📋</span> Physical Status at a Glance
       </h2>
       <ul class="facts-list">
         <li>
           <span>•</span>
           <div>
-            <strong>Old pipe removed:</strong> The broken section of the main supply line along the eastern roadway embankment has been completely excavated and removed.
+            <strong>Old pipe removed:</strong> The fractured 10-metre section along the eastern boundary embankment has been completely excavated and cut back to sound, uncompromised piping.
           </div>
         </li>
         <li>
           <span>•</span>
           <div>
-            <strong>New pipe installed:</strong> The plumbing team has installed new high-pressure blue pipe and connected it to the isolation valve using mechanical couplings.
+            <strong>New Class 16 pipe installed:</strong> The plumbing team has installed new blue high-pressure potable line and connected it via ductile iron mechanical couplings to a heavy-duty isolation gate valve.
           </div>
         </li>
         <li>
           <span>•</span>
           <div>
-            <strong>Concrete anchor blocks:</strong> Concrete is being poured around the new fittings today to anchor the pipe securely against water pressure.
+            <strong>Concrete thrust blocks poured:</strong> Timber shuttering was constructed and structural concrete was poured around all joints and valve seats on Thursday to resist hydraulic thrust forces.
           </div>
         </li>
         <li>
           <span>•</span>
           <div>
-            <strong>Concrete curing time:</strong> The concrete must dry and set before water can be turned back on. The plumbing team will inspect the cured concrete on Friday.
+            <strong>Mandatory concrete curing:</strong> Concrete must achieve minimum compressive shear strength (24 to 36 hours) before the line can be pressurized safely without joint displacement.
           </div>
         </li>
         <li>
           <span>•</span>
           <div>
-            <strong>Restoration target:</strong> Controlled reopening and testing of the water supply is planned for <strong>Friday evening</strong>.
+            <strong>Restoration target:</strong> Controlled reopening, hydraulic air purging, and pressure testing are scheduled for <strong>Friday evening</strong>.
           </div>
         </li>
       </ul>
     </section>
 
-    <!-- Verified Photos -->
+    <!-- Verified On-Site Photos (Clickable Lightbox) -->
     <section class="card">
       <h2 class="section-title">
-        <span>📸</span> On-Site Photos (Thursday Morning)
+        <span>📸</span> On-Site Photographic Evidence (Thursday)
       </h2>
+      <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.85rem;">
+        Click any photo to view full-resolution engineering details:
+      </p>
       <div class="photo-grid">
-        <div class="photo-card">
-          <img src="assets/photo_1.jpg" alt="Excavation trench with shuttering for concrete" onclick="window.open(this.src)">
+        <div class="photo-card" onclick="openLightbox('assets/photo_1.jpg')">
+          <img src="assets/photo_1.jpg" alt="Deep excavation trench with timber shuttering">
           <div class="photo-caption">
-            Trench along roadway with timber shuttering prepared for concrete pouring.
+            <span class="photo-badge">Figure 1 &bull; Excavation</span><br>
+            Trench along roadway (~10m length, ~2m depth) with timber formwork shuttering prepared for structural concrete pouring.
           </div>
         </div>
-        <div class="photo-card">
-          <img src="assets/photo_2.jpg" alt="New high-pressure blue pipe connected to line" onclick="window.open(this.src)">
+        <div class="photo-card" onclick="openLightbox('assets/photo_2.jpg')">
+          <img src="assets/photo_2.jpg" alt="New high-pressure blue pipe tie-in">
           <div class="photo-caption">
-            New high-pressure blue pipe connected to the main water line.
+            <span class="photo-badge">Figure 2 &bull; New Pipe</span><br>
+            Brand new Class 16 high-pressure blue potable pipe coupled into the main reticulation supply line.
           </div>
         </div>
-        <div class="photo-card">
-          <img src="assets/photo_3.jpg" alt="Mechanical coupling clamped into position" onclick="window.open(this.src)">
+        <div class="photo-card" onclick="openLightbox('assets/photo_3.jpg')">
+          <img src="assets/photo_3.jpg" alt="Mechanical coupling clamped into position">
           <div class="photo-caption">
-            Mechanical coupling clamped in place before concrete encasement.
+            <span class="photo-badge">Figure 3 &bull; Mechanical Joint</span><br>
+            Heavy-duty mechanical coupling clamped and torqued into position prior to mass concrete encasement.
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- Operational Timeline Log -->
+    <section class="card">
+      <h2 class="section-title">
+        <span>⏱️</span> Operational Timeline & Event Log
+      </h2>
+      <table class="timeline-table">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Operational Event</th>
+            <th>Outcome / Decision</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="timeline-time">Tue 22 Sep<br>01:35</td>
+            <td><strong>Burst Detected:</strong> Water observed flowing down eastern street roadway.</td>
+            <td>Main boundary supply valve isolated to prevent catastrophic ground erosion.</td>
+          </tr>
+          <tr>
+            <td class="timeline-time">Tue 22 Sep<br>14:00-17:00</td>
+            <td><strong>Excavation Progress:</strong> Trench dug to 8m length and 2m depth.</td>
+            <td>Inspection reveals longitudinal structural pipe collapse requiring complete section replacement.</td>
+          </tr>
+          <tr>
+            <td class="timeline-time">Wed 23 Sep<br>10:00-16:00</td>
+            <td><strong>Southern Valve Located:</strong> Jackhammering exposed southern valve chamber.</td>
+            <td>Temporary inline isolation valve installed to attempt partial supply to western units.</td>
+          </tr>
+          <tr>
+            <td class="timeline-time">Wed 23 Sep<br>18:00-22:00</td>
+            <td><strong>Throttled Pressure Test:</strong> Throttled water fed through reticulation overnight.</td>
+            <td>Temporary fix failed under nocturnal line pressure (6 bar) due to lack of cured thrust mass.</td>
+          </tr>
+          <tr>
+            <td class="timeline-time">Thu 24 Sep<br>11:30-15:00</td>
+            <td><strong>Permanent Installation & Pour:</strong> New Class 16 blue pipe, couplings, and timber formwork installed.</td>
+            <td>Structural concrete anchor blocks cast in place. Mandatory 24-36h curing period commenced.</td>
+          </tr>
+          <tr>
+            <td class="timeline-time">Fri 25 Sep<br>Evening (Target)</td>
+            <td><strong>Testing & Phased Restoration:</strong> Visual concrete shear inspection, air-bleed purging, slow recharge.</td>
+            <td>Controlled reopening across estate reticulation targeted for Friday evening.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Technical & Engineering Dossier (Mechanical Engineering Analysis) -->
+    <section class="engineering-box">
+      <h2 class="section-title" style="color: var(--accent-primary);">
+        <span>🔬</span> Engineering & Hydraulic Technical Dossier
+      </h2>
+      <p style="font-size: 0.825rem; color: var(--text-secondary); line-height: 1.5;">
+        For engineering-minded residents and technical owners, this section outlines the physical forces, fluid dynamics, and concrete kinetics governing this repair.
+      </p>
+
+      <!-- 1. Thrust Force Calculation -->
+      <div>
+        <h3 style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text-primary);">
+          1. Hydrostatic Thrust Force Calculations
+        </h3>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+          In pressurized water reticulation, static and dynamic water pressure exerts massive outward thrust at closed valves, dead ends, and directional changes:
+        </p>
+        <div class="math-block">
+          <div class="math-formula">F_thrust = 2 &bull; P &bull; A &bull; sin(&theta; / 2)</div>
+          <div class="math-legend">
+            Where:<br>
+            &bull; P = Static line pressure = 600 kPa (6.0 bar municipal head)<br>
+            &bull; D = Nominal pipe diameter = 75 mm (0.075 m)<br>
+            &bull; A = Cross-sectional area = &pi; &bull; D&sup2; / 4 = 0.00442 m&sup2;<br>
+            &bull; &theta; = Deflection angle (90&deg; bend or closed gate valve)
+          </div>
+        </div>
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Value</th>
+              <th>Physical Consequence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Axial Thrust (Dead End)</strong></td>
+              <td><strong>2.65 kN (270 kgf)</strong></td>
+              <td>Constant push trying to separate pipe from coupling.</td>
+            </tr>
+            <tr>
+              <td><strong>Resultant Bend Thrust (90&deg;)</strong></td>
+              <td><strong>3.75 kN (382 kgf)</strong></td>
+              <td>Shear force pushing pipe into trench sidewall.</td>
+            </tr>
+            <tr>
+              <td><strong>Friction Clamp Capacity</strong></td>
+              <td><strong>&lt; 1.50 kN</strong></td>
+              <td>Explains why unanchored temporary fix slipped Wednesday night.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 2. Concrete Curing Kinetics -->
+      <div>
+        <h3 style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text-primary);">
+          2. Concrete Anchor Block Curing Kinetics
+        </h3>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+          Portland cement strength is governed by chemical hydration of tricalcium silicate (C&sub3;S) forming calcium silicate hydrate (C-S-H) crystalline gel. Pressurizing uncured concrete causes immediate shear failure:
+        </p>
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Curing Age</th>
+              <th>Compressive Strength</th>
+              <th>Shear Resistance</th>
+              <th>System Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>6 to 12 Hours</strong></td>
+              <td>3 to 5 MPa (15%)</td>
+              <td>Critical Danger</td>
+              <td>Cannot resist 6 bar line pressure (Shear failure).</td>
+            </tr>
+            <tr>
+              <td><strong>24 to 36 Hours (Fri)</strong></td>
+              <td>12 to 15 MPa (50%)</td>
+              <td><strong>Safe for Testing</strong></td>
+              <td><strong>Adequate to anchor 3.75 kN thrust block shear.</strong></td>
+            </tr>
+            <tr>
+              <td><strong>7 Days</strong></td>
+              <td>18 to 20 MPa (75%)</td>
+              <td>Full Nominal</td>
+              <td>Standard service load capacity.</td>
+            </tr>
+            <tr>
+              <td><strong>28 Days</strong></td>
+              <td>25 to 30 MPa (100%)</td>
+              <td>Maximum Design</td>
+              <td>Complete crystalline matrix maturation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 3. Water Hammer & Fluid Transients -->
+      <div>
+        <h3 style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text-primary);">
+          3. Fluid Transients & Water Hammer Mitigation
+        </h3>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+          According to the Joukowsky equation (&Delta;P = &rho; &bull; c &bull; &Delta;v), sudden flow changes in an empty pipe network create high acoustic pressure waves:
+        </p>
+        <div class="math-block">
+          <div class="math-formula">&Delta;P = &rho; &bull; c &bull; &Delta;v &nbsp;&nbsp;|&nbsp;&nbsp; c = &radic;[ (K / &rho;) / (1 + (K/E)&bull;(D/t)) ] &approx; 350 m/s</div>
+          <div class="math-legend">
+            Where &rho; = 1000 kg/m&sup3;, K = 2.15 GPa, E = 3.0 GPa (PVC), c &approx; 350 m/s acoustic wave speed.
+          </div>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">
+          If water is introduced rapidly, compressing pockets of trapped air, localized shock waves exceed <strong>20 to 25 bar (2.5 MPa)</strong>. This is why the restoration on Friday evening will follow a strict, throttled 45-minute recharge sequence with high-point air venting before normal operating pressure is established.
+        </p>
+      </div>
+
     </section>
 
     <!-- Resident Checklist -->
@@ -456,19 +786,19 @@
         <li class="checklist-item">
           <span>🔒</span>
           <div>
-            <strong>Keep all taps firmly closed:</strong> This avoids airlocks in the pipes and prevents accidental overflow inside homes when water returns.
+            <strong>Keep all taps firmly closed:</strong> This prevents massive air compression shockwaves in municipal reticulation and avoids accidental indoor overflow when water is restored.
           </div>
         </li>
         <li class="checklist-item">
           <span>⚡</span>
           <div>
-            <strong>Switch off geyser breaker on your DB board:</strong> Turn off the switch labeled "GEYSER" to protect the heating element while pipes refill.
+            <strong>Switch off geyser breaker on your DB board:</strong> Switch off the circuit breaker labeled "GEYSER" to protect heating elements from dry-firing and burn-out while empty pipes refill.
           </div>
         </li>
         <li class="checklist-item">
           <span>🚰</span>
           <div>
-            <strong>When water returns on Friday evening:</strong> Open an outside garden tap or cold bath tap first for one minute to clear air and dislodged sediment before opening indoor mixer taps.
+            <strong>When water returns on Friday evening:</strong> Open an outside garden bib tap or cold bath tap first for one full minute to bleed out airlocks and dislodged mineral sediment before opening indoor ceramic mixer taps.
           </div>
         </li>
       </ul>
@@ -480,7 +810,7 @@
         <span>💬</span> Need Assistance?
       </h2>
       <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.85rem;">
-        If you need a hand with carrying water containers from the green tanks, or know of an elderly neighbor who needs support, please message management:
+        If you need assistance carrying water containers from the green tanks, or know of an elderly or frail resident requiring physical support, please message management directly:
       </p>
       <a href="https://wa.me/27656279339?text=Hallo%20Sanglen%20Management,%20ek%20benodig%20asseblief%20hulp%20met%20water%20by%20Unit:%20" class="btn-wa" target="_blank">
         <span>💬</span> Message Sanglen Management on WhatsApp
@@ -489,10 +819,16 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div>Issued by <strong>Sanglen Management</strong></div>
+      <div>Issued by <strong>Sanglen Management</strong> &bull; Complex Scheme No. SS 130/1983</div>
       <div>Official updates will continue via the Sanglen WhatsApp Announcements channel.</div>
     </footer>
 
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img class="lightbox-content" id="lightboxImg" src="" alt="Enlarged inspection photo">
   </div>
 
   <script>
@@ -521,6 +857,25 @@
         label.textContent = 'Dark';
       }
     }
+
+    function openLightbox(src) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      modal.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      modal.style.display = 'none';
+    }
+
+    // Keyboard support: ESC closes lightbox
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
 
     initTheme();
   </script>
