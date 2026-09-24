@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Sanglen Estate | Water Supply Restoration Status</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Dark Theme (Default) */
+      --bg-canvas: #0F172A;
+      --bg-surface: #1E293B;
+      --bg-surface-elevated: #273549;
+      --border-subtle: #334155;
+      --border-strong: #475569;
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      
+      --accent-primary: #38BDF8;
+      --accent-surface: rgba(56, 189, 248, 0.1);
+      
+      --status-warning-bg: rgba(245, 158, 11, 0.15);
+      --status-warning-text: #FBBF24;
+      --status-warning-border: rgba(245, 158, 11, 0.3);
+
+      --status-success-bg: rgba(16, 185, 129, 0.15);
+      --status-success-text: #34D399;
+      --status-success-border: rgba(16, 185, 129, 0.3);
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-pill: 9999px;
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    [data-theme="light"] {
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-surface-elevated: #F1F5F9;
+      --border-subtle: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+      
+      --accent-primary: #0284C7;
+      --accent-surface: rgba(2, 132, 199, 0.08);
+      
+      --status-warning-bg: rgba(217, 119, 6, 0.1);
+      --status-warning-text: #B45309;
+      --status-warning-border: rgba(217, 119, 6, 0.25);
+
+      --status-success-bg: rgba(5, 150, 105, 0.1);
+      --status-success-text: #047857;
+      --status-success-border: rgba(5, 150, 105, 0.25);
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 1.5rem 1rem 3rem 1rem;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Header Nav */
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.25rem;
+    }
+
+    .org-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+    }
+
+    .org-badge span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-primary);
+    }
+
+    .theme-toggle-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Cards */
+    .card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      border-left: 4px solid var(--status-warning-text);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .status-pill {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background-color: var(--status-warning-bg);
+      color: var(--status-warning-text);
+      border: 1px solid var(--status-warning-border);
+    }
+
+    .hero-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .hero-meta {
+      font-size: 0.775rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* Emergency Water Station Box (Green Tanks) */
+    .station-box {
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      background-color: var(--status-success-bg);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .station-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--status-success-text);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .station-desc {
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    .station-rules {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      list-style: square;
+      padding-left: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    /* Section Headings */
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* On-Site Facts List */
+    .facts-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .facts-list li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .facts-list li strong {
+      color: var(--text-primary);
+    }
+
+    /* Photo Gallery */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+
+    @media (min-width: 520px) {
+      .photo-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .photo-card {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background-color: var(--bg-surface-elevated);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    .photo-caption {
+      padding: 0.6rem;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+      flex-grow: 1;
+    }
+
+    /* Directives Checklist */
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .checklist-item {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .checklist-item strong {
+      color: var(--text-primary);
+    }
+
+    /* WhatsApp Button */
+    .btn-wa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.15rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 700;
+      background-color: var(--accent-surface);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .btn-wa:hover {
+      background-color: rgba(56, 189, 248, 0.2);
+      border-color: var(--accent-primary);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      padding-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Top Navigation -->
+    <header class="header-nav">
+      <div class="org-badge">
+        <span class="dot"></span>
+        Sanglen Body Corporate
+      </div>
+      <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()">
+        <span id="themeIcon">☀️</span>
+        <span id="themeLabel">Light</span>
+      </button>
+    </header>
+
+    <!-- Hero Card -->
+    <section class="card hero-banner">
+      <div class="status-pill">
+        <span>⚠️</span> Complex Water Supply Offline
+      </div>
+      <h1 class="hero-title">East Boundary Main Water Pipe Replacement</h1>
+      <div class="hero-meta">
+        Updated: Thursday, 24 Sep 2026, 15:15 SAST
+      </div>
+    </section>
+
+    <!-- Emergency Water Station Box (Green Tanks) -->
+    <section class="station-box">
+      <div class="station-title">
+        <span>🚰</span> Borehole Water Station: Green Tanks Next to Pool
+      </div>
+      <p class="station-desc">
+        Residents can collect clean borehole water directly from the <strong>large green storage tanks situated next to the swimming pool</strong>.
+      </p>
+      <ul class="station-rules">
+        <li><strong>Location:</strong> Taps are on the green tanks next to the pool fence.</li>
+        <li><strong>Recommended Use:</strong> Toilet flushing, cleaning, and general washing. (Boil before drinking as standard precaution with borehole water, or use bottled water for drinking).</li>
+        <li><strong>Swimming Pool:</strong> The swimming pool itself is <strong>closed for water collection</strong>. Please do not dip buckets into the pool.</li>
+      </ul>
+    </section>
+
+    <!-- Verified On-Site Facts -->
+    <section class="card">
+      <h2 class="section-title">
+        <span>📋</span> Verified Status & Timeline
+      </h2>
+      <ul class="facts-list">
+        <li>
+          <span>•</span>
+          <div>
+            <strong>Old pipe removed:</strong> The broken section of the main supply line along the eastern roadway embankment has been completely excavated and removed.
+          </div>
+        </li>
+        <li>
+          <span>•</span>
+          <div>
+            <strong>New pipe installed:</strong> The plumbing team has installed new high-pressure blue pipe and connected it to the isolation valve using mechanical couplings.
+          </div>
+        </li>
+        <li>
+          <span>•</span>
+          <div>
+            <strong>Concrete anchor blocks:</strong> Concrete is being poured around the new fittings today to anchor the pipe securely against water pressure.
+          </div>
+        </li>
+        <li>
+          <span>•</span>
+          <div>
+            <strong>Concrete curing time:</strong> The concrete must dry and set before water can be turned back on. The plumbing team will inspect the cured concrete on Friday.
+          </div>
+        </li>
+        <li>
+          <span>•</span>
+          <div>
+            <strong>Restoration target:</strong> Controlled reopening and testing of the water supply is planned for <strong>Friday evening</strong>.
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Verified Photos -->
+    <section class="card">
+      <h2 class="section-title">
+        <span>📸</span> On-Site Photos (Thursday Morning)
+      </h2>
+      <div class="photo-grid">
+        <div class="photo-card">
+          <img src="assets/photo_1.jpg" alt="Excavation trench with shuttering for concrete" onclick="window.open(this.src)">
+          <div class="photo-caption">
+            Trench along roadway with timber shuttering prepared for concrete pouring.
+          </div>
+        </div>
+        <div class="photo-card">
+          <img src="assets/photo_2.jpg" alt="New high-pressure blue pipe connected to line" onclick="window.open(this.src)">
+          <div class="photo-caption">
+            New high-pressure blue pipe connected to the main water line.
+          </div>
+        </div>
+        <div class="photo-card">
+          <img src="assets/photo_3.jpg" alt="Mechanical coupling clamped into position" onclick="window.open(this.src)">
+          <div class="photo-caption">
+            Mechanical coupling clamped in place before concrete encasement.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resident Checklist -->
+    <section class="card">
+      <h2 class="section-title">
+        <span>🛡️</span> Actions Required from Residents
+      </h2>
+      <ul class="checklist">
+        <li class="checklist-item">
+          <span>🔒</span>
+          <div>
+            <strong>Keep all taps firmly closed:</strong> This avoids airlocks in the pipes and prevents accidental overflow inside homes when water returns.
+          </div>
+        </li>
+        <li class="checklist-item">
+          <span>⚡</span>
+          <div>
+            <strong>Switch off geyser breaker on your DB board:</strong> Turn off the switch labeled "GEYSER" to protect the heating element while pipes refill.
+          </div>
+        </li>
+        <li class="checklist-item">
+          <span>🚰</span>
+          <div>
+            <strong>When water returns on Friday evening:</strong> Open an outside garden tap or cold bath tap first for one minute to clear air and dislodged sediment before opening indoor mixer taps.
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Contact & Assistance -->
+    <section class="card">
+      <h2 class="section-title">
+        <span>💬</span> Need Assistance?
+      </h2>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.85rem;">
+        If you need a hand with carrying water containers from the green tanks, or know of an elderly neighbor who needs support, please message management:
+      </p>
+      <a href="https://wa.me/27656279339?text=Hallo%20Sanglen%20Management,%20ek%20benodig%20asseblief%20hulp%20met%20water%20by%20Unit:%20" class="btn-wa" target="_blank">
+        <span>💬</span> Message Sanglen Management on WhatsApp
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>Issued by <strong>Sanglen Management</strong></div>
+      <div>Official updates will continue via the Sanglen WhatsApp Announcements channel.</div>
+    </footer>
+
+  </div>
+
+  <script>
+    function initTheme() {
+      const savedTheme = localStorage.getItem('sanglen_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeUI(savedTheme);
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('sanglen_theme', newTheme);
+      updateThemeUI(newTheme);
+    }
+
+    function updateThemeUI(theme) {
+      const icon = document.getElementById('themeIcon');
+      const label = document.getElementById('themeLabel');
+      if (theme === 'dark') {
+        icon.textContent = '☀️';
+        label.textContent = 'Light';
+      } else {
+        icon.textContent = '🌙';
+        label.textContent = 'Dark';
+      }
+    }
+
+    initTheme();
+  </script>
+</body>
+</html>
