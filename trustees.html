@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Sanglen Estate | Trustee Executive Briefing & Governance Cockpit</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Dark Theme (Default) */
+      --bg-canvas: #0F172A;
+      --bg-surface: #1E293B;
+      --bg-surface-elevated: #273549;
+      --border-subtle: #334155;
+      --border-strong: #475569;
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      
+      --accent-primary: #38BDF8;
+      --accent-surface: rgba(56, 189, 248, 0.1);
+      
+      --status-warning-bg: rgba(245, 158, 11, 0.15);
+      --status-warning-text: #FBBF24;
+      --status-warning-border: rgba(245, 158, 11, 0.3);
+
+      --status-success-bg: rgba(16, 185, 129, 0.15);
+      --status-success-text: #34D399;
+      --status-success-border: rgba(16, 185, 129, 0.3);
+
+      --status-info-bg: rgba(56, 189, 248, 0.12);
+      --status-info-text: #38BDF8;
+      --status-info-border: rgba(56, 189, 248, 0.3);
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-pill: 9999px;
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    }
+
+    [data-theme="light"] {
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-surface-elevated: #F1F5F9;
+      --border-subtle: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+      
+      --accent-primary: #0284C7;
+      --accent-surface: rgba(2, 132, 199, 0.08);
+      
+      --status-warning-bg: rgba(217, 119, 6, 0.1);
+      --status-warning-text: #B45309;
+      --status-warning-border: rgba(217, 119, 6, 0.25);
+
+      --status-success-bg: rgba(5, 150, 105, 0.1);
+      --status-success-text: #047857;
+      --status-success-border: rgba(5, 150, 105, 0.25);
+
+      --status-info-bg: rgba(2, 132, 199, 0.08);
+      --status-info-text: #0284C7;
+      --status-info-border: rgba(2, 132, 199, 0.25);
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 1.5rem 1rem 3rem 1rem;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Header Nav */
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.25rem;
+    }
+
+    .org-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+    }
+
+    .org-badge span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--status-warning-text);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-link-pill {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.725rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .nav-link-pill:hover {
+      border-color: var(--accent-primary);
+      color: var(--text-primary);
+    }
+
+    .theme-toggle-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Cards */
+    .card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      border-left: 4px solid var(--accent-primary);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .trustee-pill {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background-color: var(--accent-surface);
+      color: var(--accent-primary);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+
+    .hero-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .hero-meta {
+      font-size: 0.775rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* Section Headings */
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Facts List */
+    .facts-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .facts-list li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .facts-list li strong {
+      color: var(--text-primary);
+    }
+
+    /* Legal Protection Callout Box */
+    .legal-box {
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      background-color: var(--bg-surface-elevated);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .legal-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .legal-text {
+      font-size: 0.825rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .legal-text strong {
+      color: var(--text-primary);
+    }
+
+    /* Q&A Script Accordion / Box */
+    .script-item {
+      background-color: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .script-q {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--status-warning-text);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .script-a {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .script-a strong {
+      color: var(--text-primary);
+    }
+
+    .script-copy-btn {
+      align-self: flex-start;
+      margin-top: 0.25rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .script-copy-btn:hover {
+      border-color: var(--accent-primary);
+      color: var(--text-primary);
+    }
+
+    /* Template Cards */
+    .template-box {
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-surface-elevated);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .template-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .template-content {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      background: var(--bg-canvas);
+      padding: 0.65rem;
+      border-radius: var(--radius-sm);
+      white-space: pre-wrap;
+      line-height: 1.45;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .template-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .btn-action {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .btn-action:hover {
+      border-color: var(--accent-primary);
+      background: var(--accent-surface);
+    }
+
+    /* Risk Table */
+    .risk-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.775rem;
+    }
+
+    .risk-table th, .risk-table td {
+      padding: 0.55rem 0.65rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+    }
+
+    .risk-table th {
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+    }
+
+    .risk-table td strong {
+      color: var(--text-primary);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      padding-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Top Navigation -->
+    <header class="header-nav">
+      <div class="org-badge">
+        <span class="dot"></span>
+        Sanglen Body Corporate &bull; Trustees
+      </div>
+      <div class="header-actions">
+        <a href="index.html" class="nav-link-pill">
+          <span>&larr;</span> Resident Status Portal
+        </a>
+        <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()">
+          <span id="themeIcon">☀️</span>
+          <span id="themeLabel">Light</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Card -->
+    <section class="card hero-banner">
+      <div class="trustee-pill">
+        <span>🛡️</span> Trustee Operational & Governance Dossier
+      </div>
+      <h1 class="hero-title">Water Reticulation Replacement: Trustee Factsheet & Q&A Protocol</h1>
+      <div class="hero-meta">
+        Briefing Date: Thursday, 24 Sep 2026, 16:45 SAST &bull; Governance Ref: SS 130/1983
+      </div>
+    </section>
+
+    <!-- Executive Overview for Trustees -->
+    <section class="card">
+      <h2 class="section-title">
+        <span>📋</span> Executive Operational Reality (Thursday 16:30 SAST)
+      </h2>
+      <ul class="facts-list">
+        <li>
+          <span>•</span>
+          <div>
+            <strong>Piping & mechanical joints complete:</strong> 10m fractured section replaced with blue Class 16 high-pressure pipe, isolation gate valve, and ductile iron sleeve couplings.
+          </div>
+        </li>
+        <li>
+          <span>•</span>
+          <div>
+            <strong>All concrete thrust blocks poured today:</strong> All timber shuttering and structural concrete blocks were cast this afternoon ("Al die nodige is gecast").
+          </div>
+        </li>
+        <li>
+          <span>•</span>
+          <div>
+            <strong>Contractor off-site for overnight cure:</strong> Plumbing crew cleaned the work area and vacated site to guarantee 100% undisturbed chemical hydration crystallization overnight.
+          </div>
+        </li>
+        <li>
+          <span>•</span>
+          <div>
+            <strong>Friday testing schedule:</strong> Plumbers return Friday morning for visual inspection, joint torque confirmation, and slow air purging. Full system restoration across the complex is targeted for <strong>Friday evening around 17:00 (5 PM)</strong>.
+          </div>
+        </li>
+        <li>
+          <span>•</span>
+          <div>
+            <strong>Emergency water access:</strong> Dedicated taps on the large green tanks next to the swimming pool fence are operational for toilet flushing and washing. (Pool remains strictly closed for dipping).
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Fiduciary & Legal Safeguards (STSMA Section 8) -->
+    <section class="card">
+      <div class="legal-box">
+        <div class="legal-title">
+          <span>⚖️</span> Fiduciary & Statutory Protection (STSMA Act 8 of 2011)
+        </div>
+        <p class="legal-text">
+          Trustees hold a statutory fiduciary relationship to the Body Corporate under <strong>Section 8(1) of the Sectional Titles Schemes Management Act</strong>. Section 8(2) mandates that trustees act honestly, in good faith, and exercise the degree of care, skill, and diligence reasonably expected of persons managing common property.
+        </p>
+        <p class="legal-text">
+          <strong>Why rushing a "quick fix" would have breached fiduciary duty:</strong><br>
+          Leaving a temporary unanchored friction clamp under 6 bar municipal pressure (which slipped Wednesday night) would have risked catastrophic embankment collapse and undermining the structural foundations of adjacent boundary units. Under Section 8(3), trustees who approve reckless shortcuts face personal liability if damages arise from gross negligence.
+        </p>
+        <p class="legal-text">
+          <strong>Protected by Professional Engineering Standards:</strong><br>
+          By enforcing SANS 1200 L standards (mass concrete thrust blocks with mandatory 24-hour hydration cure), trustees have fully complied with their legal duty of care. This protects scheme insurance coverage and eliminates repeat repair expenditures.
+        </p>
+      </div>
+    </section>
+
+    <!-- Post-Mortem: Why Wednesday's Fix Slipped -->
+    <section class="card">
+      <h2 class="section-title">
+        <span>🔍</span> Engineering Post-Mortem: Wednesday vs Thursday
+      </h2>
+      <table class="risk-table">
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>Wednesday Temporary Attempt</th>
+            <th>Thursday Permanent Solution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Method</strong></td>
+            <td>Mechanical friction clamp on existing pipe</td>
+            <td>Complete 10m Class 16 line + ductile iron couplings</td>
+          </tr>
+          <tr>
+            <td><strong>Anchorage</strong></td>
+            <td>None (supported by backfill soil only)</td>
+            <td>Structural mass concrete thrust blocks against trench rock</td>
+          </tr>
+          <tr>
+            <td><strong>Hydraulic Load</strong></td>
+            <td>3.75 kN (382 kgf) thrust vector</td>
+            <td>3.75 kN thrust safely transferred to concrete mass</td>
+          </tr>
+          <tr>
+            <td><strong>Holding Force</strong></td>
+            <td>Friction grip &lt; 1.50 kN (Failed)</td>
+            <td>Cured concrete shear capacity &gt; 12.0 kN (FoS &ge; 2.2)</td>
+          </tr>
+          <tr>
+            <td><strong>Outcome</strong></td>
+            <td>Slipped at night under 6 bar municipal head</td>
+            <td>Permanent 25-year structural service life</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Resident Inquiry De-Escalation Playbook -->
+    <section class="card">
+      <h2 class="section-title">
+        <span>🗣️</span> Resident De-Escalation Scripts (For Individual Inquiries)
+      </h2>
+      <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.85rem;">
+        When residents call or message you directly, use these verified talking points:
+      </p>
+
+      <!-- Script 1 -->
+      <div class="script-item">
+        <div class="script-q">
+          <span>❓</span> Resident: "Why couldn't you just clamp it and turn the water on yesterday?"
+        </div>
+        <div class="script-a">
+          <strong>Trustee Script:</strong> "We tested a mechanical clamp on Wednesday evening. However, municipal water pressure in Sanglen is 6 bar, which generates 380 kilograms of continuous pushing force on the pipe bend. The clamp slipped under that pressure. If we turned water on without concrete anchor blocks, the pipe would blow apart immediately, flooding the roadway and undermining the embankment. Today the team cast solid concrete anchor blocks that need 24 hours to cure so this repair lasts permanently."
+        </div>
+        <button class="script-copy-btn" onclick="copyScript(this)">
+          <span>📋</span> Copy Script
+        </button>
+      </div>
+
+      <!-- Script 2 -->
+      <div class="script-item">
+        <div class="script-q">
+          <span>❓</span> Resident: "Why can't we take water from the swimming pool?"
+        </div>
+        <div class="script-a">
+          <strong>Trustee Script:</strong> "The swimming pool contains chemical sanitizers and pool filtration equipment that can be damaged if buckets are dipped in. We have opened the dedicated taps on the large green borehole water tanks right next to the pool fence. You can collect clean borehole water there for flushing toilets and household cleaning."
+        </div>
+        <button class="script-copy-btn" onclick="copyScript(this)">
+          <span>📋</span> Copy Script
+        </button>
+      </div>
+
+      <!-- Script 3 -->
+      <div class="script-item">
+        <div class="script-q">
+          <span>❓</span> Resident: "The pipe is already installed today, why must we wait until Friday 5 PM?"
+        </div>
+        <div class="script-a">
+          <strong>Trustee Script:</strong> "The new pipe is completely in place, and all concrete blocks were poured this afternoon. Concrete does not dry: it hardens through a chemical reaction called hydration. At 12 hours it has the strength of damp sand. By Friday evening it reaches the 12 MPa strength required to anchor against 6 bar of pressure. Plumbers return Friday morning for testing, and full pressure is targeted for around 5 PM Friday."
+        </div>
+        <button class="script-copy-btn" onclick="copyScript(this)">
+          <span>📋</span> Copy Script
+        </button>
+      </div>
+
+      <!-- Script 4 -->
+      <div class="script-item">
+        <div class="script-q">
+          <span>❓</span> Resident: "Can elderly or frail owners get help collecting water?"
+        </div>
+        <div class="script-a">
+          <strong>Trustee Script:</strong> "Yes, absolutely. Please send the unit number to Sanglen Management (+27 65 627 9339) or let me know, and volunteers will carry water containers directly to their front door."
+        </div>
+        <button class="script-copy-btn" onclick="copyScript(this)">
+          <span>📋</span> Copy Script
+        </button>
+      </div>
+    </section>
+
+    <!-- 1-Click WhatsApp Quick Responses -->
+    <section class="card">
+      <h2 class="section-title">
+        <span>💬</span> 1-Click WhatsApp Response Templates (For Trustees)
+      </h2>
+
+      <!-- Template 1 -->
+      <div class="template-box">
+        <div class="template-title">Template 1: Timeline & Concrete Curing (Short)</div>
+        <div class="template-content" id="tmpl1">Hi [Name], all new pipes and concrete anchor blocks were fully cast on Thursday afternoon. Concrete requires 24 hours to chemically cure so it can withstand 6 bar of municipal water pressure without blowing off. Plumbers return Friday morning for testing, with full water restoration targeted for Friday around 17:00 (5 PM). Clean borehole water is available from the green tanks next to the pool. See full details: https://groblerpaul.github.io/sanglen-water/</div>
+        <div class="template-actions">
+          <button class="btn-action" onclick="copyText('tmpl1')"><span>📋</span> Copy Text</button>
+          <a class="btn-action" href="https://wa.me/?text=Hi%2C%20all%20new%20pipes%20and%20concrete%20anchor%20blocks%20were%20fully%20cast%20on%20Thursday%20afternoon.%20Concrete%20requires%2024%20hours%20to%20chemically%20cure%20so%20it%20can%20withstand%206%20bar%20of%20municipal%20water%20pressure%20without%20blowing%20off.%20Plumbers%20return%20Friday%20morning%20for%20testing%2C%20with%20full%20water%20restoration%20targeted%20for%20Friday%20around%2017%3A00%20(5%20PM).%20Clean%20borehole%20water%20is%20available%20from%20the%20green%20tanks%20next%20to%20the%20pool.%20See%20full%20details%3A%20https%3A%2F%2Fgroblerpaul.github.io%2Fsanglen-water%2F" target="_blank"><span>💬</span> Open WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Template 2 -->
+      <div class="template-box">
+        <div class="template-title">Template 2: Emergency Borehole Water Directions</div>
+        <div class="template-content" id="tmpl2">Hi [Name], please do not take water from the pool. Instead, collect clean borehole water directly from the taps on the large green tanks situated right next to the swimming pool fence. It is suitable for flushing toilets and cleaning. If you or an elderly neighbor need physical assistance carrying containers, please notify management at 065 627 9339.</div>
+        <div class="template-actions">
+          <button class="btn-action" onclick="copyText('tmpl2')"><span>📋</span> Copy Text</button>
+          <a class="btn-action" href="https://wa.me/?text=Hi%2C%20please%20do%20not%20take%20water%20from%20the%20pool.%20Instead%2C%20collect%20clean%20borehole%20water%20directly%20from%20the%20taps%20on%20the%20large%20green%20tanks%20situated%20right%20next%20to%20the%20swimming%20pool%20fence.%20It%20is%20suitable%20for%20flushing%20toilets%20and%20cleaning.%20If%20you%20or%20an%20elderly%20neighbor%20need%20physical%20assistance%20carrying%20containers%2C%20please%20notify%20management%20at%20065%20627%209339." target="_blank"><span>💬</span> Open WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Friday Testing & Handover Protocol -->
+    <section class="card">
+      <h2 class="section-title">
+        <span>🗓️</span> Friday Restoration Schedule & Contingency Protocol
+      </h2>
+      <table class="risk-table">
+        <thead>
+          <tr>
+            <th>Time Slot</th>
+            <th>Operational Phase</th>
+            <th>Success Criteria</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>08:00 - 10:00</strong></td>
+            <td>Concrete inspection & coupling torque check</td>
+            <td>Concrete surface firm, zero visual cracking under initial tap</td>
+          </tr>
+          <tr>
+            <td><strong>10:00 - 13:00</strong></td>
+            <td>Low-pressure bleed & air purging</td>
+            <td>Wash-out hydrant open; acoustic water hammer avoided</td>
+          </tr>
+          <tr>
+            <td><strong>13:00 - 16:00</strong></td>
+            <td>Holding pressure test at 6 bar</td>
+            <td>Zero leakage at mechanical sleeve couplings</td>
+          </tr>
+          <tr>
+            <td><strong>16:00 - 17:30</strong></td>
+            <td>Phased complex reticulation recharge</td>
+            <td>Full pressure delivered to all units (Target ~17:00)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>Issued for the <strong>Board of Trustees</strong> &bull; SS Sanglen (SS 130/1983)</div>
+      <div>Confidential Governance Document &bull; Public portal: <a href="index.html" style="color: var(--accent-primary); text-decoration: none;">groblerpaul.github.io/sanglen-water/</a></div>
+    </footer>
+
+  </div>
+
+  <script>
+    function initTheme() {
+      const savedTheme = localStorage.getItem('sanglen_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeUI(savedTheme);
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('sanglen_theme', newTheme);
+      updateThemeUI(newTheme);
+    }
+
+    function updateThemeUI(theme) {
+      const icon = document.getElementById('themeIcon');
+      const label = document.getElementById('themeLabel');
+      if (theme === 'dark') {
+        icon.textContent = '☀️';
+        label.textContent = 'Light';
+      } else {
+        icon.textContent = '🌙';
+        label.textContent = 'Dark';
+      }
+    }
+
+    function copyScript(btn) {
+      const scriptText = btn.previousElementSibling.innerText;
+      navigator.clipboard.writeText(scriptText).then(() => {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<span>✅</span> Copied!';
+        setTimeout(() => { btn.innerHTML = orig; }, 2000);
+      });
+    }
+
+    function copyText(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Copied to clipboard!');
+      });
+    }
+
+    initTheme();
+  </script>
+</body>
+</html>

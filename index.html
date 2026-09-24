@@ -94,7 +94,7 @@
     }
 
     .container {
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -125,6 +125,31 @@
       height: 8px;
       border-radius: 50%;
       background: var(--accent-primary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .trustee-link-pill {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.725rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .trustee-link-pill:hover {
+      border-color: var(--accent-primary);
+      color: var(--text-primary);
     }
 
     .theme-toggle-btn {
@@ -262,7 +287,7 @@
       gap: 1rem;
     }
 
-    @media (min-width: 540px) {
+    @media (min-width: 560px) {
       .photo-grid {
         grid-template-columns: repeat(3, 1fr);
       }
@@ -317,7 +342,37 @@
       padding: 1.25rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.15rem;
+    }
+
+    /* Intuitive Analogy Cards */
+    .analogy-card {
+      background-color: var(--bg-surface-elevated);
+      border-left: 3px solid var(--accent-primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .analogy-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .analogy-body {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .analogy-body strong {
+      color: var(--text-primary);
     }
 
     .math-block {
@@ -326,7 +381,7 @@
       border-radius: var(--radius-sm);
       padding: 0.85rem;
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.775rem;
       color: var(--text-primary);
       overflow-x: auto;
       line-height: 1.5;
@@ -449,7 +504,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(15, 23, 42, 0.92);
+      background-color: rgba(15, 23, 42, 0.94);
       z-index: 9999;
       justify-content: center;
       align-items: center;
@@ -457,7 +512,7 @@
     }
 
     .lightbox-content {
-      max-width: 90vw;
+      max-width: 92vw;
       max-height: 85vh;
       border-radius: var(--radius-sm);
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
@@ -503,10 +558,15 @@
         <span class="dot"></span>
         Sanglen Body Corporate
       </div>
-      <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()">
-        <span id="themeIcon">☀️</span>
-        <span id="themeLabel">Light</span>
-      </button>
+      <div class="header-actions">
+        <a href="trustees.html" class="trustee-link-pill">
+          <span>🛡️</span> Trustee Briefing &rarr;
+        </a>
+        <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()">
+          <span id="themeIcon">☀️</span>
+          <span id="themeLabel">Light</span>
+        </button>
+      </div>
     </header>
 
     <!-- Hero Card -->
@@ -516,7 +576,7 @@
       </div>
       <h1 class="hero-title">East Boundary Main Water Pipe Replacement</h1>
       <div class="hero-meta">
-        Updated: Thursday, 24 Sep 2026, 16:15 SAST &bull; Reticulation Ref: INC-20260922-WATER-02
+        Updated: Thursday, 24 Sep 2026, 16:45 SAST &bull; Reticulation Ref: INC-20260922-WATER-02
       </div>
     </section>
 
@@ -531,44 +591,44 @@
       <ul class="station-rules">
         <li><strong>Location:</strong> Taps are on the green tanks adjacent to the pool enclosure.</li>
         <li><strong>Recommended Use:</strong> Toilet flushing, cleaning, and general household washing. (Boil before drinking as a standard precaution with untreated borehole water, or use bottled water for drinking).</li>
-        <li><strong>Swimming Pool:</strong> The swimming pool itself is <strong>closed for water collection</strong>. Please do not dip buckets into the pool to protect pump filtration systems and prevent contamination.</li>
+        <li><strong>Swimming Pool:</strong> The swimming pool itself is <strong>closed for water collection</strong>. Please do not dip buckets into the pool to protect pump filtration systems and prevent chemical contamination.</li>
       </ul>
     </section>
 
-    <!-- Executive Summary of Status -->
+    <!-- Physical Status at a Glance -->
     <section class="card">
       <h2 class="section-title">
-        <span>📋</span> Physical Status at a Glance
+        <span>📋</span> Physical Status at a Glance (Verified On-Site: Thursday 16:30)
       </h2>
       <ul class="facts-list">
         <li>
           <span>•</span>
           <div>
-            <strong>Old pipe removed:</strong> The fractured 10-metre section along the eastern boundary embankment has been completely excavated and cut back to sound, uncompromised piping.
+            <strong>Old pipe completely removed:</strong> The fractured 10-metre section along the eastern boundary embankment was excavated, cut back to sound piping, and completely cleared from the trench.
           </div>
         </li>
         <li>
           <span>•</span>
           <div>
-            <strong>New Class 16 pipe installed:</strong> The plumbing team has installed new blue high-pressure potable line and connected it via ductile iron mechanical couplings to a heavy-duty isolation gate valve.
+            <strong>New Class 16 blue line installed:</strong> Plumbers installed brand-new 75mm high-pressure potable blue piping, heavy-duty mechanical couplings, and an inline isolation gate valve with handwheel.
           </div>
         </li>
         <li>
           <span>•</span>
           <div>
-            <strong>Concrete thrust blocks poured:</strong> Timber shuttering was constructed and structural concrete was poured around all joints and valve seats on Thursday to resist hydraulic thrust forces.
+            <strong>All concrete thrust blocks poured today:</strong> All timber formwork was built and all required structural concrete anchor blocks and joint encasements were successfully cast this afternoon ("Al die nodige is gecast").
           </div>
         </li>
         <li>
           <span>•</span>
           <div>
-            <strong>Mandatory concrete curing:</strong> Concrete must achieve minimum compressive shear strength (24 to 36 hours) before the line can be pressurized safely without joint displacement.
+            <strong>Plumber crew off-site for curing:</strong> The plumbing team cleaned the work zone and vacated the site to grant the concrete undisturbed curing time overnight.
           </div>
         </li>
         <li>
           <span>•</span>
           <div>
-            <strong>Restoration target:</strong> Controlled reopening, hydraulic air purging, and pressure testing are scheduled for <strong>Friday evening</strong>.
+            <strong>Friday testing and restoration target:</strong> Plumbers return Friday morning to conduct visual joint inspections, followed by controlled air bleeding. Full pressurized restoration across the estate is targeted for <strong>Friday evening around 17:00 (5 PM)</strong>.
           </div>
         </li>
       </ul>
@@ -577,31 +637,52 @@
     <!-- Verified On-Site Photos (Clickable Lightbox) -->
     <section class="card">
       <h2 class="section-title">
-        <span>📸</span> On-Site Photographic Evidence (Thursday)
+        <span>📸</span> On-Site Photographic Evidence (Thursday Progress)
       </h2>
       <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.85rem;">
         Click any photo to view full-resolution engineering details:
       </p>
       <div class="photo-grid">
-        <div class="photo-card" onclick="openLightbox('assets/photo_1.jpg')">
-          <img src="assets/photo_1.jpg" alt="Deep excavation trench with timber shuttering">
+        <div class="photo-card" onclick="openLightbox('assets/jc_image_4.jpg')">
+          <img src="assets/jc_image_4.jpg" alt="New Class 16 blue pipe and valve installed in trench">
           <div class="photo-caption">
-            <span class="photo-badge">Figure 1 &bull; Excavation</span><br>
-            Trench along roadway (~10m length, ~2m depth) with timber formwork shuttering prepared for structural concrete pouring.
+            <span class="photo-badge">Figure 1 &bull; Pipe Installation</span><br>
+            New Class 16 blue pipe laid along the 10m embankment trench with mechanical couplings and blue gate valve in position.
           </div>
         </div>
-        <div class="photo-card" onclick="openLightbox('assets/photo_2.jpg')">
-          <img src="assets/photo_2.jpg" alt="New high-pressure blue pipe tie-in">
+        <div class="photo-card" onclick="openLightbox('assets/jc_image_12.jpg')">
+          <img src="assets/jc_image_12.jpg" alt="Plumber pouring concrete thrust blocks">
           <div class="photo-caption">
-            <span class="photo-badge">Figure 2 &bull; New Pipe</span><br>
-            Brand new Class 16 high-pressure blue potable pipe coupled into the main reticulation supply line.
+            <span class="photo-badge">Figure 2 &bull; Concrete Casting</span><br>
+            Plumber inside trench casting mass concrete thrust blocks around mechanical joints and valve base to resist hydraulic loads.
+          </div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('assets/jc_image_8.jpg')">
+          <img src="assets/jc_image_8.jpg" alt="Completed concrete anchor blocks curing">
+          <div class="photo-caption">
+            <span class="photo-badge">Figure 3 &bull; Anchor Blocks Cast</span><br>
+            Completed concrete thrust blocks curing in timber formwork, bracing the pipeline directly against undisturbed trench sidewalls.
+          </div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('assets/photo_1.jpg')">
+          <img src="assets/photo_1.jpg" alt="Trench excavation along roadway">
+          <div class="photo-caption">
+            <span class="photo-badge">Figure 4 &bull; Excavation Profile</span><br>
+            Trench profile along roadway (~10m length, ~2m depth) showing safety netting and access clearance.
           </div>
         </div>
         <div class="photo-card" onclick="openLightbox('assets/photo_3.jpg')">
-          <img src="assets/photo_3.jpg" alt="Mechanical coupling clamped into position">
+          <img src="assets/photo_3.jpg" alt="Torqued mechanical coupling">
           <div class="photo-caption">
-            <span class="photo-badge">Figure 3 &bull; Mechanical Joint</span><br>
-            Heavy-duty mechanical coupling clamped and torqued into position prior to mass concrete encasement.
+            <span class="photo-badge">Figure 5 &bull; Mechanical Coupling</span><br>
+            Ductile iron mechanical sleeve coupling clamped and torqued down prior to final mass concrete encasement.
+          </div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('assets/jc_image_10.jpg')">
+          <img src="assets/jc_image_10.jpg" alt="Full pipeline anchor series curing">
+          <div class="photo-caption">
+            <span class="photo-badge">Figure 6 &bull; Overnight Curing</span><br>
+            Full series of concrete blocks in place. Trench secured for mandatory 24-hour hydration crystallization.
           </div>
         </div>
       </div>
@@ -628,153 +709,236 @@
           </tr>
           <tr>
             <td class="timeline-time">Tue 22 Sep<br>14:00-17:00</td>
-            <td><strong>Excavation Progress:</strong> Trench dug to 8m length and 2m depth.</td>
+            <td><strong>Excavation Progress:</strong> Trench excavated to 10m length and 2m depth.</td>
             <td>Inspection reveals longitudinal structural pipe collapse requiring complete section replacement.</td>
           </tr>
           <tr>
             <td class="timeline-time">Wed 23 Sep<br>10:00-16:00</td>
-            <td><strong>Southern Valve Located:</strong> Jackhammering exposed southern valve chamber.</td>
+            <td><strong>Valve Located:</strong> Jackhammering exposed southern valve chamber.</td>
             <td>Temporary inline isolation valve installed to attempt partial supply to western units.</td>
           </tr>
           <tr>
             <td class="timeline-time">Wed 23 Sep<br>18:00-22:00</td>
             <td><strong>Throttled Pressure Test:</strong> Throttled water fed through reticulation overnight.</td>
-            <td>Temporary fix failed under nocturnal line pressure (6 bar) due to lack of cured thrust mass.</td>
+            <td>Temporary friction clamp slipped under nocturnal municipal line pressure (6 bar) without concrete anchors.</td>
           </tr>
           <tr>
-            <td class="timeline-time">Thu 24 Sep<br>11:30-15:00</td>
-            <td><strong>Permanent Installation & Pour:</strong> New Class 16 blue pipe, couplings, and timber formwork installed.</td>
-            <td>Structural concrete anchor blocks cast in place. Mandatory 24-36h curing period commenced.</td>
+            <td class="timeline-time">Thu 24 Sep<br>09:00-16:30</td>
+            <td><strong>Permanent Installation & Casting:</strong> Class 16 pipe, couplings, valve, and timber shuttering installed.</td>
+            <td>All structural concrete anchor blocks fully cast ("Al die nodige is gecast"). Team packed up for overnight cure.</td>
           </tr>
           <tr>
-            <td class="timeline-time">Fri 25 Sep<br>Evening (Target)</td>
-            <td><strong>Testing & Phased Restoration:</strong> Visual concrete shear inspection, air-bleed purging, slow recharge.</td>
-            <td>Controlled reopening across estate reticulation targeted for Friday evening.</td>
+            <td class="timeline-time">Fri 25 Sep<br>08:00-12:00</td>
+            <td><strong>Phased Testing:</strong> Visual joint shear inspection, throttled fill, air purging.</td>
+            <td>Contractor initiates controlled line pressurization and checks couplings for zero seepage.</td>
+          </tr>
+          <tr>
+            <td class="timeline-time">Fri 25 Sep<br>17:00 (Target)</td>
+            <td><strong>Full Pressure Restoration:</strong> Controlled reopening across estate reticulation.</td>
+            <td>Full system recharge targeted for around 17:00 (5 PM) once concrete exceeds 12 MPa shear threshold.</td>
           </tr>
         </tbody>
       </table>
     </section>
 
-    <!-- Technical & Engineering Dossier (Mechanical Engineering Analysis) -->
+    <!-- Technical & Engineering Dossier: Dual-Track Analysis -->
     <section class="engineering-box">
-      <h2 class="section-title" style="color: var(--accent-primary);">
-        <span>🔬</span> Engineering & Hydraulic Technical Dossier
-      </h2>
-      <p style="font-size: 0.825rem; color: var(--text-secondary); line-height: 1.5;">
-        For engineering-minded residents and technical owners, this section outlines the physical forces, fluid dynamics, and concrete kinetics governing this repair.
-      </p>
-
-      <!-- 1. Thrust Force Calculation -->
       <div>
-        <h3 style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text-primary);">
-          1. Hydrostatic Thrust Force Calculations
-        </h3>
-        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
-          In pressurized water reticulation, static and dynamic water pressure exerts massive outward thrust at closed valves, dead ends, and directional changes:
+        <h2 class="section-title" style="color: var(--accent-primary); margin-bottom: 0.35rem;">
+          <span>🔬</span> Why Couldn't a Quick Clamp Hold? The Real Physics Behind 6 Bar Pressure
+        </h2>
+        <p style="font-size: 0.825rem; color: var(--text-secondary); line-height: 1.5;">
+          A natural question arises: <em>"Why can't we simply clamp the pipe and switch the water back on?"</em> Below is an accessible explanation of the physical forces at work, followed by the rigorous mechanical engineering calculations for technical residents.
         </p>
-        <div class="math-block">
-          <div class="math-formula">F_thrust = 2 &bull; P &bull; A &bull; sin(&theta; / 2)</div>
-          <div class="math-legend">
-            Where:<br>
-            &bull; P = Static line pressure = 600 kPa (6.0 bar municipal head)<br>
-            &bull; D = Nominal pipe diameter = 75 mm (0.075 m)<br>
-            &bull; A = Cross-sectional area = &pi; &bull; D&sup2; / 4 = 0.00442 m&sup2;<br>
-            &bull; &theta; = Deflection angle (90&deg; bend or closed gate valve)
+      </div>
+
+      <!-- Part A: Everyday Intuition & Physical Analogies -->
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <h3 style="font-size: 0.875rem; font-weight: 700; color: var(--text-primary);">
+          Part A: The Everyday Reality (For Non-Engineers)
+        </h3>
+
+        <div class="analogy-card">
+          <div class="analogy-title">
+            <span>🚗</span> 1. The Battering Ram: A Small Car on a Dinner Plate
+          </div>
+          <div class="analogy-body">
+            Municipal water pressure in our area is <strong>6 bar (600 kilopascals)</strong>. In a 75mm pipe, that water does not just flow gently: it pushes forward with a continuous axial force of <strong>2.65 kN (270 kilograms of force)</strong>. At bends and closed valves, that outward shove spikes to <strong>3.75 kN (382 kilograms of force)</strong>.<br>
+            That is equivalent to <strong>parking a small car or having four heavy rugby players stand on an area no bigger than a single dinner plate</strong>, pushing sideways day and night without stopping.
           </div>
         </div>
-        <table class="tech-table">
-          <thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Value</th>
-              <th>Physical Consequence</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Axial Thrust (Dead End)</strong></td>
-              <td><strong>2.65 kN (270 kgf)</strong></td>
-              <td>Constant push trying to separate pipe from coupling.</td>
-            </tr>
-            <tr>
-              <td><strong>Resultant Bend Thrust (90&deg;)</strong></td>
-              <td><strong>3.75 kN (382 kgf)</strong></td>
-              <td>Shear force pushing pipe into trench sidewall.</td>
-            </tr>
-            <tr>
-              <td><strong>Friction Clamp Capacity</strong></td>
-              <td><strong>&lt; 1.50 kN</strong></td>
-              <td>Explains why unanchored temporary fix slipped Wednesday night.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
 
-      <!-- 2. Concrete Curing Kinetics -->
-      <div>
-        <h3 style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text-primary);">
-          2. Concrete Anchor Block Curing Kinetics
-        </h3>
-        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
-          Portland cement strength is governed by chemical hydration of tricalcium silicate (C&sub3;S) forming calcium silicate hydrate (C-S-H) crystalline gel. Pressurizing uncured concrete causes immediate shear failure:
-        </p>
-        <table class="tech-table">
-          <thead>
-            <tr>
-              <th>Curing Age</th>
-              <th>Compressive Strength</th>
-              <th>Shear Resistance</th>
-              <th>System Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>6 to 12 Hours</strong></td>
-              <td>3 to 5 MPa (15%)</td>
-              <td>Critical Danger</td>
-              <td>Cannot resist 6 bar line pressure (Shear failure).</td>
-            </tr>
-            <tr>
-              <td><strong>24 to 36 Hours (Fri)</strong></td>
-              <td>12 to 15 MPa (50%)</td>
-              <td><strong>Safe for Testing</strong></td>
-              <td><strong>Adequate to anchor 3.75 kN thrust block shear.</strong></td>
-            </tr>
-            <tr>
-              <td><strong>7 Days</strong></td>
-              <td>18 to 20 MPa (75%)</td>
-              <td>Full Nominal</td>
-              <td>Standard service load capacity.</td>
-            </tr>
-            <tr>
-              <td><strong>28 Days</strong></td>
-              <td>25 to 30 MPa (100%)</td>
-              <td>Maximum Design</td>
-              <td>Complete crystalline matrix maturation.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- 3. Water Hammer & Fluid Transients -->
-      <div>
-        <h3 style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text-primary);">
-          3. Fluid Transients & Water Hammer Mitigation
-        </h3>
-        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
-          According to the Joukowsky equation (&Delta;P = &rho; &bull; c &bull; &Delta;v), sudden flow changes in an empty pipe network create high acoustic pressure waves:
-        </p>
-        <div class="math-block">
-          <div class="math-formula">&Delta;P = &rho; &bull; c &bull; &Delta;v &nbsp;&nbsp;|&nbsp;&nbsp; c = &radic;[ (K / &rho;) / (1 + (K/E)&bull;(D/t)) ] &approx; 350 m/s</div>
-          <div class="math-legend">
-            Where &rho; = 1000 kg/m&sup3;, K = 2.15 GPa, E = 3.0 GPa (PVC), c &approx; 350 m/s acoustic wave speed.
+        <div class="analogy-card">
+          <div class="analogy-title">
+            <span>🍾</span> 2. Why Friction Clamps Slip: The Champagne Cork Effect
+          </div>
+          <div class="analogy-body">
+            A mechanical clamp tightened over smooth plastic pipe relies entirely on surface friction. On smooth PVC, a friction clamp can only resist around <strong>1.5 kN</strong> of sliding force before giving way. When 6 bar of municipal water hits it, the <strong>3.75 kN hydraulic force easily overpowers the 1.5 kN clamp</strong>, popping the pipe out of the coupling exactly like a champagne cork under pressure. That is what happened during Wednesday's temporary overnight test.
           </div>
         </div>
-        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">
-          If water is introduced rapidly, compressing pockets of trapped air, localized shock waves exceed <strong>20 to 25 bar (2.5 MPa)</strong>. This is why the restoration on Friday evening will follow a strict, throttled 45-minute recharge sequence with high-point air venting before normal operating pressure is established.
-        </p>
+
+        <div class="analogy-card">
+          <div class="analogy-title">
+            <span>🧱</span> 3. Concrete Hydration: Wet Sand vs Solid Granite
+          </div>
+          <div class="analogy-body">
+            Concrete does not harden by "drying out": it hardens through a chemical reaction called hydration, growing microscopic interlocking crystals. After 12 hours, concrete looks dry but is chemically weak like damp sand (only 3 to 5 MPa strength). If pressurized too early, the 380 kg water ram crushes the green concrete into powder. By <strong>24 to 36 hours (Friday evening)</strong>, it reaches over 50% design strength (12 to 15 MPa), transforming into rock-hard granite capable of anchoring the pipeline for decades.
+          </div>
+        </div>
+
+        <div class="analogy-card">
+          <div class="analogy-title">
+            <span>💥</span> 4. Water Hammer: The Air Rifle in the Walls
+          </div>
+          <div class="analogy-body">
+            Our complex reticulation currently has hundreds of metres of empty pipes filled with air. If water is turned on rapidly, the rushing water compresses that trapped air like an air rifle, generating acoustic shockwaves called "water hammer" that exceed <strong>20 bar (over 300 psi)</strong>. This would rupture geysers and burst indoor pipes. This is why Friday's restoration requires a strict, throttled 45-minute bleed sequence with open hydrants.
+          </div>
+        </div>
       </div>
 
+      <!-- Part B: PhD-Level Mechanical Engineering Derivations -->
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <h3 style="font-size: 0.875rem; font-weight: 700; color: var(--text-primary);">
+          Part B: Rigorous Mechanical Engineering Derivations (PhD Level)
+        </h3>
+
+        <!-- B1. Hydrostatic Thrust Force Derivation -->
+        <div>
+          <h4 style="font-size: 0.825rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--accent-primary);">
+            B.1 Momentum & Hydrostatic Force Vector Derivation (SANS 1200 L)
+          </h4>
+          <p style="font-size: 0.775rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+            From the integral form of the Navier-Stokes momentum conservation equation for a control volume containing a directional deflection or closed boundary:
+          </p>
+          <div class="math-block">
+            <div class="math-formula">F_thrust = 2 &bull; P &bull; A &bull; sin(&theta; / 2) + &rho; &bull; Q &bull; &Delta;v</div>
+            <div class="math-legend">
+              Under static and quasi-static closing conditions (Q &rarr; 0), the dynamic term vanishes, leaving the hydrostatic resultant:<br>
+              &bull; P = Static municipal head = 600 kPa (6.0 bar = 6.0 &times; 10&sup5; N/m&sup2;)<br>
+              &bull; D = Nominal internal pipe bore = 75 mm = 0.075 m<br>
+              &bull; A = Cross-sectional area = &pi; &bull; D&sup2; / 4 = &pi; &bull; (0.075)&sup2; / 4 = 4.418 &times; 10&supmin;&sup3; m&sup2;<br>
+              &bull; &theta; = Deflection angle (90&deg; elbow or perpendicular tee branch)
+            </div>
+          </div>
+          <table class="tech-table">
+            <thead>
+              <tr>
+                <th>Vector Component</th>
+                <th>Mathematical Formula</th>
+                <th>Calculated Load</th>
+                <th>Physical Mechanism</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Axial Thrust (Dead End / Gate)</strong></td>
+                <td>F_axial = P &bull; A</td>
+                <td><strong>2.651 kN (270.3 kgf)</strong></td>
+                <td>Tension load attempting to extract spigot from mechanical coupling.</td>
+              </tr>
+              <tr>
+                <td><strong>Resultant Bend Thrust (90&deg;)</strong></td>
+                <td>F_bend = &radic;2 &bull; P &bull; A</td>
+                <td><strong>3.749 kN (382.3 kgf)</strong></td>
+                <td>Transverse shear pushing fitting into embankment soil matrix.</td>
+              </tr>
+              <tr>
+                <td><strong>Coulomb Friction Capacity</strong></td>
+                <td>F_friction = &mu; &bull; N_clamping</td>
+                <td><strong>&le; 1.500 kN</strong></td>
+                <td>Smooth PVC-U to ductile iron friction coefficient (&mu; &approx; 0.25).</td>
+              </tr>
+              <tr>
+                <td><strong>Factor of Safety (No Concrete)</strong></td>
+                <td>FoS = F_resisting / F_thrust</td>
+                <td><strong>0.40 &lt;&lt; 1.0 (Failure)</strong></td>
+                <td>Rigorous proof that unanchored mechanical clamp must slip.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- B2. Concrete Hydration Kinetics -->
+        <div>
+          <h4 style="font-size: 0.825rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--accent-primary);">
+            B.2 Portland Cement Hydration Kinetics & Shear Bearing Limit (SABS 0100)
+          </h4>
+          <p style="font-size: 0.775rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+            Compressive and shear capacity evolution follows the exothermic dissolution-precipitation reaction of alite (tricalcium silicate):
+          </p>
+          <div class="math-block">
+            <div class="math-formula">2 C&sub3;S + 6 H&sub2;O &rarr; C-S-H (gel matrix) + 3 Ca(OH)&sub2; &nbsp;&nbsp;[&Delta;H = -500 J/g]</div>
+            <div class="math-legend">
+              Design concrete class: C20/25 (25 MPa characteristic 28-day cylinder strength). Soil bearing interface: undisturbed clay-shale trench sidewall (&sigma;_bearing = 150 kPa).
+            </div>
+          </div>
+          <table class="tech-table">
+            <thead>
+              <tr>
+                <th>Curing Horizon</th>
+                <th>Hydration Ratio</th>
+                <th>Compressive f_cu</th>
+                <th>Allowable Shear &tau;</th>
+                <th>Structural State</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>6 to 12 Hours (Green)</strong></td>
+                <td>&sim;15%</td>
+                <td>3.0 to 4.5 MPa</td>
+                <td>&lt; 0.35 MPa</td>
+                <td>Plastic deformation; shear failure under 3.75 kN thrust.</td>
+              </tr>
+              <tr>
+                <td><strong>24 to 36 Hours (Fri 17:00)</strong></td>
+                <td><strong>&gt;50%</strong></td>
+                <td><strong>12.5 to 15.0 MPa</strong></td>
+                <td><strong>&gt; 1.35 MPa</strong></td>
+                <td><strong>Safe for testing: FoS &ge; 2.2 against thrust block detachment.</strong></td>
+              </tr>
+              <tr>
+                <td><strong>7 Days</strong></td>
+                <td>&sim;75%</td>
+                <td>18.0 to 20.0 MPa</td>
+                <td>&gt; 1.80 MPa</td>
+                <td>Full design service load capacity achieved.</td>
+              </tr>
+              <tr>
+                <td><strong>28 Days</strong></td>
+                <td>100%</td>
+                <td>&ge; 25.0 MPa</td>
+                <td>&ge; 2.40 MPa</td>
+                <td>Complete crystalline C-S-H matrix maturation.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- B3. Joukowsky Fluid Transients -->
+        <div>
+          <h4 style="font-size: 0.825rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--accent-primary);">
+            B.3 Acoustic Wave Speed & Water Hammer Wave Propagation
+          </h4>
+          <p style="font-size: 0.775rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+            Acoustic wave speed (c) in an elastic conduit with fluid-structure interaction:
+          </p>
+          <div class="math-block">
+            <div class="math-formula">&Delta;P = &rho; &bull; c &bull; &Delta;v &nbsp;&nbsp;|&nbsp;&nbsp; c = &radic;[ (K / &rho;) / (1 + (K/E)&bull;(D/e)) ] &approx; 348 m/s</div>
+            <div class="math-legend">
+              Where:<br>
+              &bull; &rho; = 1000 kg/m&sup3; (water density), K = 2.15 GPa (water bulk modulus)<br>
+              &bull; E = 3.0 GPa (PVC-U Young's modulus), D = 75 mm, e = 4.5 mm (wall thickness)<br>
+              &bull; Rapid air column expulsion at &Delta;v = 1.8 m/s creates surge &Delta;P = 1000 &bull; 348 &bull; 1.8 = 626 kPa (6.26 bar).<br>
+              &bull; Total instantaneous peak: P_total = P_static + &Delta;P = 6.0 + 6.3 = 12.3 bar (multi-phase entrapped air spikes exceed 20 bar).
+            </div>
+          </div>
+          <p style="font-size: 0.775rem; color: var(--text-secondary); margin-top: 0.5rem;">
+            <strong>Mitigation Strategy:</strong> Controlled 45-minute gradual recharge using downstream boundary wash-out hydrants to bleed entrapped air at low velocity (&Delta;v &lt; 0.2 m/s), maintaining transient surge below 0.7 bar.
+          </p>
+        </div>
+
+      </div>
     </section>
 
     <!-- Resident Checklist -->
@@ -821,6 +985,9 @@
     <footer class="footer">
       <div>Issued by <strong>Sanglen Management</strong> &bull; Complex Scheme No. SS 130/1983</div>
       <div>Official updates will continue via the Sanglen WhatsApp Announcements channel.</div>
+      <div style="margin-top: 0.35rem;">
+        <a href="trustees.html" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">Trustee Confidential Briefing &rarr;</a>
+      </div>
     </footer>
 
   </div>
